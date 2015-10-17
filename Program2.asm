@@ -19,9 +19,9 @@ INCLUDE Irvine32.inc
   userFibInput    DWORD ?
   msgError        BYTE "Out of Range", 0
   msgFibs         BYTE "Fibonacci numbers are as follows: ", 0
-  fibCounter      DWORD 2            ;current fib index (1,2,3..)
-  fiveCounter     DWORD ?
-  fib1            DWORD 0
+  fibCounter      DWORD 0            ;current fib index (1,2,3..)
+  fiveCounter     DWORD 0
+  fib1            DWORD 1
   fib2            DWORD 1
   temp            DWORD ?
   fiveSpaces      BYTE "     ", 0
@@ -65,7 +65,7 @@ L1:
 ;Get User Data
   call ReadDec
   CMP eax, UPPERLIMIT
-  ja error
+  ja ERROR
   CMP eax, 0
   jbe error
   mov userFibInput, eax
@@ -73,7 +73,7 @@ L1:
   jmp Fibs
 
 ;Error Message
-Error:
+ERROR:
   mov edx, OFFSET msgError
   call WriteString
   call CrLf
@@ -89,6 +89,8 @@ Fibs:
   CMP userFibInput, 2
   jb ONEFIBS
   je TWOFIBS
+  mov fibCounter, 2
+  mov fiveCounter, 2
   mov eax, fib1
   mov edx, OFFSET fiveSpaces
   call WriteDec
@@ -96,6 +98,7 @@ Fibs:
   mov eax, fib2
   call WriteDec
   call WriteString
+  mov ecx, userFibInput
   jmp FIBCALCULATOR
 
 ONEFIBS:
@@ -125,19 +128,10 @@ FIBCALCULATOR:
   call WriteDec
   mov edx, OFFSET fiveSpaces
   call WriteString
-  ;;;;;;;;;;;;;;
   mov temp, eax
   push fib2
   pop fib1
   mov fib2, eax
-
-  ;;;;;;OR;;;;;
-  ;mov temp, eax
-  ;mov eax, fib2
-  ;mov,fib1, eax
-  ;mov eax, temp
-  ;mov fib2, eax
-
   loop FIBCALCULATOR
 
 NEWLINE:
