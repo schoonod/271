@@ -148,8 +148,6 @@ FAREWELL:
   call WriteString
   call CrLf
 
-;no. of spaces on both sides could equal (12 - LENGTHOF fibNumber)/2
-
 exit
 main ENDP
 END main
