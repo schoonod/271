@@ -15,7 +15,7 @@ INCLUDE Irvine32.inc
   userName        BYTE 20 DUP(0)
   msgGreeting     BYTE "Hello ",0
   msgFibPrompt    BYTE "Please enter the number of Fibonacci terms to be displayed as an integer between 1 - ", 0
-  UPPERLIMIT      = 46;
+  UPPERLIMIT      = 46
   userFibInput    DWORD ?
   msgError        BYTE "Out of Range", 0
   msgFibs         BYTE "Fibonacci numbers are as follows: ", 0
