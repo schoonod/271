@@ -21,7 +21,7 @@ INCLUDE Irvine32.inc
 .data
 	; Message Outputs
 		; Intro messages
-		 msgIntro1			BYTE	"Welcome to the Sorting Random Integers Thingy, programmed by Dane Schoonover. ", 0
+		msgIntro1			BYTE	"Welcome to the Sorting Random Integers Thingy, programmed by Dane Schoonover. ", 0
 		msgIntro2			BYTE	"This program generates random numbers in the range [100 .. 999], ", 0
 		msgIntro3			BYTE	"displays the original list, sorts the list, and calculates the median value. ", 0
 		msgIntro4			BYTE	"Finally, it displays the list sorted in descending order.", 0
@@ -120,7 +120,6 @@ Introduction PROC
 	call		CrLf
 	mov			eax, 1600
 	call		Delay
-
 	
 	; Get the user's first name
 	mov			edx, OFFSET msgNamePrompt
@@ -175,6 +174,7 @@ GetData PROC
 	ret			4
 GetData ENDP
 
+
 FillArray PROC  
 ; The FillArray procedure makes use of a loop and RandomRange to generate a series of random numbers
 
@@ -196,6 +196,7 @@ FillArray PROC
 	pop ebp
 	ret 8 
 FillArray ENDP
+
 
 DisplayList PROC  
 ; DisplayList displays the array in order of 10 numbers per line, with three spaces
@@ -230,6 +231,7 @@ DisplayList PROC
 	ret 12 
 DisplayList ENDP
 
+
 SortList PROC
 ; SortList uses the bubblesort algorithm provided by Irvine.
 ; It sorts integers in order of largest to smallest.
@@ -262,6 +264,7 @@ L4:
 	pop			ebp
 	ret			8	
 SortList ENDP
+
 
 DisplayMedian PROC
 ; DisplayMedian divides the user integer input by two, and uses that value
